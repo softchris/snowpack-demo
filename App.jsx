@@ -13,28 +13,33 @@ const Header = styled.h1`
   background: DarkRed;
   color: Wheat;
   width: 100%;
-  position: absolute;
+  grid-row: 1;
   padding: 20px 10px;
   font-size: 16px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: 0;
 `;
 
 const Navigation = styled.nav`
   width: 200px;
   background: DarkSlateGrey;
-  position:absolute;
-  bottom: 0;
-  top: 77px;
+  grid-row:2;
+  grid-column: 1;
 `;
 
-const Content = styled.nav`
-  width: 100%;
+const Content = styled.div`
+  grid-row:2;
+  grid-column: 2;
   padding: 20px;
-  margin-left: 200px;
-  margin-top: 60px;
 `;
 
 const Overview = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-rows: 60px 100%;
+  grid-template-columns: 200px 100%;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const Menu = styled.ul`
