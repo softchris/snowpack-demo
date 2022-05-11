@@ -8,13 +8,29 @@ import Dashboard from "./Pages/Dashboard";
 import NoMatch from "./Pages/NoMatch";
 import Product from "./Pages/Product";
 
+const Header = styled.h1`
+  display: block;
+  background: DarkRed;
+  color: Wheat;
+  width: 100%;
+  position: absolute;
+  padding: 20px 10px;
+  font-size: 16px;
+`;
+
 const Navigation = styled.nav`
   width: 200px;
+  background: DarkSlateGrey;
+  position:absolute;
+  bottom: 0;
+  top: 77px;
 `;
 
 const Content = styled.nav`
   width: 100%;
   padding: 20px;
+  margin-left: 200px;
+  margin-top: 60px;
 `;
 
 const Overview = styled.div`
@@ -31,6 +47,8 @@ const Item = styled.li`
  a {
    padding: 10px 5px;
    display: block;
+   color: white;
+   text-decoration: none;
  }
 `
 
@@ -55,6 +73,7 @@ export default function App() {
 function Layout() {
   return (
     <Overview>
+      <Header>Welcome to Inventory management system!</Header>
       <Navigation>
         <Menu>
           <Item>
