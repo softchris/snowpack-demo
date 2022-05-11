@@ -2,3 +2,8 @@
 body {
   font-family: sans-serif;
 }
+
+li>a.active {
+  font-weight: bold;
+  border-right: solid 10px red;
+}

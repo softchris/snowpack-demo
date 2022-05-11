@@ -1,7 +1,87 @@
-import React from 'react';
+import * as React from "react";
+import { Routes, Route, Outlet, Link, NavLink } from "react-router-dom";
+import styled from "styled-components";
+import ProductList from "./Pages/ProductList";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Dashboard from "./Pages/Dashboard";
+import NoMatch from "./Pages/NoMatch";
+import Product from "./Pages/Product";
 
-function App() {
-  return (<div>App</div>)
+const Navigation = styled.nav`
+  width: 200px;
+`;
+
+const Content = styled.nav`
+  width: 100%;
+  padding: 20px;
+`;
+
+const Overview = styled.div`
+  display: flex;
+`;
+
+const Menu = styled.ul`
+  list-style: none;
+  padding: 0;
+`
+const Item = styled.li`
+ margin: 10px 0px;
+ 
+ a {
+   padding: 10px 5px;
+   display: block;
+ }
+`
+
+export default function App() {
+  return (
+    <div>
+      
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="products/:id" element={<Product />} />
+          <Route path="products" element={<ProductList />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+function Layout() {
+  return (
+    <Overview>
+      <Navigation>
+        <Menu>
+          <Item>
+            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}  >Home</NavLink>
+          </Item>
+          <Item>
+            <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : 'inactive')} >About</NavLink>
+          </Item>
+          <Item>
+            <NavLink to="/products" className={({ isActive }) => (isActive ? 'active' : 'inactive')} >Products</NavLink>
+          </Item>
+          <Item>
+            <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : 'inactive')} >Dashboard</NavLink>
+          </Item>
+          <Item>
+            <NavLink to="/nothing-here" className={({ isActive }) => (isActive ? 'active' : 'inactive')} >Nothing here</NavLink>
+          </Item>
+        </Menu>
+      </Navigation>
+
+      <hr />
+      <Content>
+        <Outlet />
+      </Content> 
+      
+    </Overview>
+  );
+}
+
+
